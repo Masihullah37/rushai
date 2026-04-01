@@ -3,7 +3,8 @@ import { C } from "../constants/colors";
 
 const Particles = memo(() => {
   const ref = useRef<HTMLCanvasElement>(null);
-  const raf = useRef<number>();
+  // const raf = useRef<number>();
+  const raf = useRef<number | null>(null);
   const mouse = useRef({ x: -9999, y: -9999 });
   const pts = useRef<Array<{ x: number; y: number; vx: number; vy: number; r: number }>>([]);
 

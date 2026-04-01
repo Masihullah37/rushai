@@ -18,23 +18,51 @@ export default function Contact() {
   const [focused, setFocused] = useState<string | null>(null);
   const cur = STEPS[step];
 
-  const sendEmail = async () => {
-    setSending(true);
-    try {
-      // Appel API vers votre backend Laravel
-      const response = await fetch("http://127.0.0.1:8000/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
+  // const sendEmail = async () => {
+  //   setSending(true);
+  //   try {
+  //     // Appel API vers votre backend Laravel
+  //     const response = await fetch("http://127.0.0.1:8000/api/contact", {
+  //       method: "POST",
+  //       headers: { "Content-Type": "application/json" },
+  //       body: JSON.stringify(form),
+  //     });
       
-      if (!response.ok) throw new Error("Erreur d'envoi");
-    } catch (error) {
-      console.error("Erreur lors de l'envoi:", error);
+  //     if (!response.ok) throw new Error("Erreur d'envoi");
+  //   } catch (error) {
+  //     console.error("Erreur lors de l'envoi:", error);
+  //   }
+  //   setSent(true);
+  //   setSending(false);
+  // };
+
+  // src/components/Contact.tsx
+
+const sendEmail = async () => {
+  setSending(true);
+  try {
+    // Dynamically get the URL from your .env files
+    const API_BASE_URL = import.meta.env.VITE_API_URL;
+    
+    const response = await fetch(`${API_BASE_URL}/contact`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(form),
+    });
+    
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.message || "Erreur d'envoi");
     }
-    setSent(true);
+
+    setSent(true); // Only show success if response was OK
+  } catch (error) {
+    console.error("Erreur lors de l'envoi:", error);
+    alert("Une erreur est survenue. Veuillez réessayer plus tard.");
+  } finally {
     setSending(false);
-  };
+  }
+};
 
   const next = () => {
     if (!form[cur.f as keyof typeof form].trim()) return;
