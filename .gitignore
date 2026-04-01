@@ -1,0 +1,20 @@
+# Créer un .gitignore racine
+@"
+# Fichiers globaux
+.DS_Store
+Thumbs.db
+*.log
+.env
+.env.*
+!.env.example
+
+# Dossiers généraux
+.DS_Store
+.cache/
+.vscode/
+.idea/
+
+# Fichiers temporaires
+*.tmp
+*.temp
+"@ | Out-File -FilePath .gitignore -Encoding UTF8
