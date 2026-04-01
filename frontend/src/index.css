@@ -1,34 +1,23 @@
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  html { scroll-behavior: smooth; }
-  body { @apply font-body text-text-primary bg-surface-light; }
-  ::-webkit-scrollbar { width: 4px; }
-  ::-webkit-scrollbar-thumb { @apply bg-primary-400 rounded-full; }
+/* Les styles globaux sont maintenant dans constants/colors.ts avec la variable CSS */
+/* Ce fichier peut rester minimal car les styles sont injectés via App.tsx */
+
+:root {
+  font-family: 'DM Sans', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-@layer components {
-  .btn-primary {
-    @apply px-7 py-3.5 rounded-xl bg-gradient-to-r from-primary-500 to-accent-blue
-           text-white font-display font-bold text-sm shadow-teal
-           hover:shadow-teal-lg hover:-translate-y-0.5 transition-all duration-200;
-  }
-  .btn-outline {
-    @apply px-7 py-3.5 rounded-xl border border-primary-200 text-primary-700
-           font-display font-semibold text-sm bg-white/80 backdrop-blur-sm
-           hover:border-primary-400 hover:bg-primary-50 transition-all duration-200;
-  }
-  .card-glass {
-    @apply bg-white/80 backdrop-blur-md border border-white/60 rounded-2xl shadow-card;
-  }
-  .section-title {
-    @apply font-display font-bold text-text-primary leading-tight;
-  }
-  .tag {
-    @apply text-xs font-mono px-2.5 py-1 rounded-md border;
-  }
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
 }
