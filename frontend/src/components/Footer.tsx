@@ -1,44 +1,84 @@
-// src/components/Footer.tsx
+
+// ════════════════════════════════════════════════════════════════
+// FILE: src/components/Footer.tsx — COMPLETE
+// Dark navy, all functional navigation links
+// ════════════════════════════════════════════════════════════════
 import { C } from "../constants/colors";
+const go = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 
 export default function Footer() {
   return (
-    <footer style={{ borderTop: `1px solid ${C.border}`, padding: "clamp(36px,6vw,52px) clamp(16px,4vw,28px) clamp(24px,4vw,36px)", background: "#f0f7ff" }}>
-      <div style={{ maxWidth: 1180, margin: "0 auto" }}>
-        <div className="footer-grid" style={{ display: "grid", gridTemplateColumns: "2.2fr 1fr 1fr 1fr", gap: "clamp(24px,4vw,48px)", marginBottom: 44 }}>
+    <footer style={{ background: C.bgDark, padding: "clamp(56px,8vw,80px) clamp(16px,4vw,32px) 32px", borderTop: `1px solid ${C.border}` }}>
+      <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+        <div className="footer-grid" style={{ display: "grid", gridTemplateColumns: "2fr 1fr 1fr 1fr", gap: "clamp(28px,4vw,52px)", marginBottom: 52 }}>
+          {/* Brand */}
           <div>
-            <div style={{ fontFamily: "'Syne',sans-serif", fontSize: 24, fontWeight: 800, marginBottom: 12, letterSpacing: -1 }}>
-              <span style={{ background: `linear-gradient(135deg,${C.teal},${C.blue})`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Rush</span>
-              <span style={{ color: C.text }}>AI</span>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
+              <div style={{ width: 30, height: 30, borderRadius: "50%", background: `linear-gradient(135deg,${C.blue},${C.cyan})`, display: "flex", alignItems: "center", justifyContent: "center", boxShadow: `0 0 16px rgba(59,130,246,.4)` }}>
+                <span style={{ color: "#fff", fontSize: 13, fontWeight: 900, fontFamily: "'Syne',sans-serif" }}>R</span>
+              </div>
+              <span style={{ fontFamily: "'Syne',sans-serif", fontSize: 20, fontWeight: 700, color: C.white }}>RushAI</span>
             </div>
-            <p style={{ fontSize: 13, color: C.muted, lineHeight: 1.8, maxWidth: 250 }}>Spécialiste en Systèmes IA & Automatisation. Création de solutions IA sécurisées, d'automatisations intelligentes et de systèmes de données scalables pour les entreprises du monde entier.</p>
-            <div style={{ marginTop: 16, display: "flex", alignItems: "center", gap: 8, fontSize: 13, color: C.teal, fontWeight: 600 }}>
-              <span>📧</span><span>info@rushai.pro</span>
-            </div>
+            <p style={{ fontSize: 13, color: C.textMuted, lineHeight: 1.82, maxWidth: 240, marginBottom: 20 }}>
+              Spécialiste en Systèmes IA & Automatisation. Solutions sécurisées, scalables et orientées ROI pour les entreprises.
+            </p>
+            <a href="mailto:contact@rushai.pro" style={{ fontSize: 13, color: C.blue, display: "flex", alignItems: "center", gap: 7, textDecoration: "none" }}
+              onMouseEnter={e=>{(e.currentTarget as HTMLElement).style.color=C.cyan;}}
+              onMouseLeave={e=>{(e.currentTarget as HTMLElement).style.color=C.blue;}}>
+              📧 contact@rushai.pro
+            </a>
           </div>
-          {[
-            { t: "Services", ls: ["IA & RAG", "Chatbots", "Développement API", "Tableaux de Bord BI", "DevOps", "Conseil IA"] },
-            { t: "Solutions", ls: ["IA Enterprise", "Sécurité des Données", "Automatisation", "Ingénierie des Données"] },
-            { t: "Entreprise", ls: ["À Propos", "Contact", "Politique de Confidentialité", "Conditions d'Utilisation"] },
-          ].map(col => (
-            <div key={col.t}>
-              <div style={{ fontFamily: "'Syne',sans-serif", fontSize: 11.5, fontWeight: 700, color: C.text, marginBottom: 16, letterSpacing: 1 }}>{col.t.toUpperCase()}</div>
-              {col.ls.map(l => (
-                <div key={l} style={{ fontSize: 13, color: C.muted, marginBottom: 9, transition: "color .2s", cursor: "pointer" }}
-                  onMouseEnter={e => e.currentTarget.style.color = C.teal}
-                  onMouseLeave={e => e.currentTarget.style.color = C.muted}>{l}</div>
-              ))}
-            </div>
-          ))}
+
+          {/* Services */}
+          <div>
+            <div style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: 10, color: C.textMuted, marginBottom: 18, letterSpacing: 1.5 }}>SERVICES</div>
+            {[["IA & RAG","services"],["Chatbots","services"],["Développement API","services"],["Tableaux BI","services"],["DevOps","services"],["Conseil IA","services"]].map(([l,id])=>(
+              <button key={l} onClick={()=>go(id)} style={{ display: "block", background: "none", border: "none", cursor: "pointer", fontSize: 13, color: C.textMuted, marginBottom: 10, textAlign: "left", padding: 0, transition: "color .2s" }}
+                onMouseEnter={e=>{(e.currentTarget as HTMLElement).style.color=C.blue;}}
+                onMouseLeave={e=>{(e.currentTarget as HTMLElement).style.color=C.textMuted;}}>{l}</button>
+            ))}
+          </div>
+
+          {/* Navigation */}
+          <div>
+            <div style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: 10, color: C.textMuted, marginBottom: 18, letterSpacing: 1.5 }}>NAVIGATION</div>
+            {[["Accueil","home"],["Services","services"],["Démo Live","demo"],["Moteur RAG","demo"],["À Propos","about"],["Contact","contact"]].map(([l,id])=>(
+              <button key={l} onClick={()=>go(id)} style={{ display: "block", background: "none", border: "none", cursor: "pointer", fontSize: 13, color: C.textMuted, marginBottom: 10, textAlign: "left", padding: 0, transition: "color .2s" }}
+                onMouseEnter={e=>{(e.currentTarget as HTMLElement).style.color=C.white;}}
+                onMouseLeave={e=>{(e.currentTarget as HTMLElement).style.color=C.textMuted;}}>{l}</button>
+            ))}
+          </div>
+
+          {/* Legal */}
+          <div>
+            <div style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: 10, color: C.textMuted, marginBottom: 18, letterSpacing: 1.5 }}>LÉGAL</div>
+            {[["Politique de Confidentialité","/confidentialite"]].map(([l,href])=>(
+              <a key={l} href={href} target="_blank" rel="noopener noreferrer" style={{ display: "block", fontSize: 13, color: C.textMuted, marginBottom: 10, textDecoration: "none", transition: "color .2s" }}
+                onMouseEnter={e=>{(e.currentTarget as HTMLElement).style.color=C.white;}}
+                onMouseLeave={e=>{(e.currentTarget as HTMLElement).style.color=C.textMuted;}}>{l}</a>
+            ))}
+          </div>
         </div>
-        <div style={{ borderTop: `1px solid ${C.border}`, paddingTop: 24, display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12 }}>
-          <div style={{ fontSize: 12.5, color: C.muted }}>© 2025 RushAI — Tous droits réservés.</div>
-          <div style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 12.5, color: C.muted }}>
-            <div style={{ width: 7, height: 7, borderRadius: "50%", background: C.green, animation: "pulse 2s infinite" }} />
-            Tous les systèmes opérationnels
+
+        <div style={{ height: 1, background: `linear-gradient(90deg,transparent,${C.border},transparent)`, marginBottom: 24 }} />
+
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12 }}>
+          <div style={{ fontSize: 12, color: C.textMuted, fontFamily: "'JetBrains Mono',monospace" }}>
+            © 2026 RushAI. Tous droits réservés. — Données conservées pour le temps nécessaire , RGPD conforme.
+          </div>
+          <div style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 12, color: C.textMuted }}>
+            <div style={{ width: 6, height: 6, borderRadius: "50%", background: C.green, animation: "pulse 2s infinite" }}/>
+            Tous systèmes opérationnels
           </div>
         </div>
       </div>
     </footer>
   );
 }
+
+
+// ════════════════════════════════════════════════════════════════
+// FILE: src/pages/Privacy.tsx — COMPLETE RGPD policy (dark theme)
+// ════════════════════════════════════════════════════════════════
+// export default function Privacy() { ... }
+// (see Privacy.tsx output file)
