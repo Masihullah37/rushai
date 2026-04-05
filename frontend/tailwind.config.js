@@ -39,9 +39,15 @@ export default {
         }
       },
       fontFamily: {
-        display: ['Syne', 'sans-serif'],
+        // display: ['Syne', 'sans-serif'],
+        display: ['"DM Serif Display"', 'serif'],
         body:    ['DM Sans', 'sans-serif'],
         mono:    ['JetBrains Mono', 'monospace'],
+      },
+      colors:{
+        cream: '#F5F2ED',
+        ink:   '#1A1A18',
+        lime:  '#C8F04A',
       },
       animation: {
         'float':      'float 4s ease-in-out infinite',
