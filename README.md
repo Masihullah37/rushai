@@ -29,6 +29,9 @@
 | **Moteur RAG** | Démo interactive d'un moteur de recherche documentaire IA |
 | **Contact** | Formulaire multi-étapes avec consentement RGPD |
 | **Confidentialité** | Page politique RGPD complète |
+<img width="1705" height="903" alt="Screenshot" src="https://github.com/user-attachments/assets/0229a90a-1fe3-4e37-b909-51cdf0b35b5c" />
+
+
 
 ---
 
